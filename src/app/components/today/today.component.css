@@ -1,0 +1,92 @@
+#today {
+  width: 100%;
+  height: auto;
+  margin: auto; }
+  #today #slider {
+    width: 100%;
+    height: 450px; }
+    #today #slider #images {
+      width: 100%;
+      height: 450px;
+      position: absolute; }
+      #today #slider #images * {
+        width: 100%;
+        height: 450px; }
+    #today #slider #text {
+      width: 100%;
+      height: 450px;
+      position: absolute;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(15, 15, 15, 0.4); }
+      #today #slider #text h1, #today #slider #text h3 {
+        color: #fff; }
+  #today #todaylist {
+    width: 100%;
+    height: auto; }
+    #today #todaylist h3 {
+      text-align: center; }
+    #today #todaylist #items {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; }
+      #today #todaylist #items .item {
+        width: 300px;
+        height: auto;
+        margin: 0px 20px 0px 20px;
+        border: solid black 0px; }
+  #today #news {
+    width: 100%;
+    min-height: 300px;
+    margin: auto; }
+    #today #news h3 {
+      width: 100%;
+      text-align: center; }
+    #today #news .updates {
+      width: 98%;
+      height: auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap; }
+      #today #news .updates .column {
+        width: 30%;
+        min-width: 300px;
+        height: auto; }
+        #today #news .updates .column h4 {
+          width: 100%;
+          height: auto;
+          text-align: center;
+          text-decoration: underline;
+          color: #555; }
+        #today #news .updates .column .info {
+          width: 100%;
+          height: auto;
+          margin: 5px 0px 5px 0px;
+          padding-bottom: 5px;
+          border-bottom: 1px solid black; }
+          #today #news .updates .column .info .topic {
+            width: 100%;
+            height: auto;
+            font-size: 22px; }
+          #today #news .updates .column .info .date {
+            width: 100%;
+            height: auto;
+            font-size: 12px; }
+          #today #news .updates .column .info .theme {
+            width: 100%;
+            height: auto;
+            font-size: 18px; }
+          #today #news .updates .column .info p {
+            width: 100%;
+            height: auto; }
+  #today .titleM, #today .topicM, #today .dateM {
+    text-align: center; }
+
+/*# sourceMappingURL=today.component.css.map */

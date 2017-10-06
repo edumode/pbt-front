@@ -1,0 +1,51 @@
+#guideline {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #guideline .search {
+    width: 70%;
+    height: auto;
+    margin-top: 5px; }
+  #guideline .content {
+    width: 70%;
+    min-height: 700px;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; }
+    #guideline .content div {
+      width: 98%; }
+      #guideline .content div .one {
+        width: 99%;
+        height: auto; }
+        #guideline .content div .one .info {
+          width: 100%;
+          height: 30px; }
+          #guideline .content div .one .info .title {
+            font-size: 20px;
+            float: left; }
+          #guideline .content div .one .info .date, #guideline .content div .one .info .btn {
+            float: right;
+            margin: 0px 0px 0px 5px; }
+        #guideline .content div .one p {
+          width: 95%;
+          float: right; }
+      #guideline .content div .two {
+        width: 90%;
+        height: auto; }
+        #guideline .content div .two .info {
+          width: 100%;
+          height: 30px; }
+          #guideline .content div .two .info .title {
+            font-size: 20px;
+            float: left; }
+          #guideline .content div .two .info .date, #guideline .content div .two .info .btn {
+            float: right;
+            margin: 0px 0px 0px 5px; }
+        #guideline .content div .two p {
+          width: 95%;
+          float: right; }
+
+/*# sourceMappingURL=guideline.component.css.map */

@@ -1,0 +1,158 @@
+<div id="today">
+
+  <div id="slider">
+
+    <div id="images">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="./assets/images/img3.jpg" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="text">
+      <h1>Welcome {{name}}</h1>
+      <h3>{{role}} Role</h3>
+    </div>
+
+  </div>
+
+  <div id="todaylist">
+
+    <h3>Due for today</h3>
+
+    <div id="items">
+      <div *ngFor="let item of list" class="item" >
+          
+        <div class="buttons" *ngIf="role == 'Admin'">
+          <nav class="glyphicon glyphicon glyphicon-pencil btn btn-primary btn-sm" data-toggle="modal" data-target="#toEdit" (click)="editItemInModal(item._id)" ></nav>
+          <nav class="glyphicon glyphicon glyphicon-remove btn btn-primary btn-sm" (click)="deleteItem(item._id)"></nav>
+        </div>
+              
+        <div [innerHTML]="item.text | sanitizer" class="thumbnail"></div>
+            
+      </div>
+
+    </div>
+
+    <!-- Modal to create-->
+    <nav class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" (click)="createToday()" *ngIf="role == 'Admin'">Create</nav>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">New</h4>
+          </div>
+          <div class="modal-body" id="createToday">
+           <!-- Summernote text-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createItem()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal to edit-->
+    <div class="modal fade" id="toEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Edit information</h4>
+          </div>
+          <div class="modal-body" id="editToday" >
+          <!-- Summernote text-->
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateItem()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal to read-->
+    <div class="modal fade" id="toRead" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{item.section | uppercase}}</h4>
+          </div>
+          <div class="modal-body" >
+            
+              <h2 class="titleM">{{item.title}}</h2>
+              <h4 class="titleM">{{item.topic}}</h4>
+              <h5 class="titleM">{{item.date | date}}</h5>
+              
+              <p [innerHTML]="item.text | sanitizer"></p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="news">
+    <h3>Last updates</h3>
+
+    <div class="updates">
+
+      <div class="column">
+
+        <h4>Releases</h4>
+         
+        <div *ngFor="let info of releases">
+          <div class="info" >
+            <div class="topic">{{info.title}}</div>
+            <span class="date">{{info.date | date}}</span>
+            <div class="theme">{{info.topic}}</div> 
+            <p>{{info.description}}</p>
+  
+            <div class="buttons">
+              <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#toRead" (click)="openArticle(info._id)">Read</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="column">
+
+        <h4>Reinforcements</h4>
+          
+        <div *ngFor="let info of reinforcements">
+          <div class="info" >
+            <div class="topic">{{info.title}}</div>
+            <span class="date">{{info.date | date}}</span>
+            <div class="theme">{{info.topic}}</div> 
+            <p>{{info.description}}</p>
+  
+            <div class="buttons">
+              <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#toRead" (click)="openArticle(info._id)">Read</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+

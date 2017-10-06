@@ -1,0 +1,230 @@
+<div id="articles">
+
+  <h2>Releases, Reinforcements and Hyperlinks</h2>
+
+    <button class="btn btn-success btn-lx" data-toggle="modal" data-target="#myModal" (click)="createArticle()" *ngIf="role == 'Admin'">New</button>
+     <!-- Modal to create-->
+    <div class="modal fade wd" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" (click)="resetAll()">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">New</h4>
+          </div>
+          <div class="modal-body" >
+            <!-- Summernote text-->
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title">
+            </div>
+
+            <div class="form-group">
+              <label for="topic">Topic</label>
+              <input type="text" class="form-control" id="topic">
+            </div>
+
+             <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="description">
+            </div>
+
+             <div class="form-group">
+              <label for="section">Section</label>
+              <select id="section" class="form-control">
+                <option value="release">Release</option>
+                <option value="reinforcement">Reinforcement</option>
+                <option value="hyperlink">Hyperlink</option>
+              </select>
+            </div>
+
+             <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" class="form-control" id="date">
+            </div>
+
+            <div class="form-group">
+              <label for="text">Text</label>
+              <div id="createArticle"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="image">Images</label>
+              <input type="text" class="form-control" placeholder="Searching..." [(ngModel)]="img">
+              <div class="images">
+                <div *ngFor="let image of tools | images:img">
+                  <div class="image" *ngIf="image.extension == 'png' || image.extension == 'jpg'">
+                    <img src="{{url}}get-image/{{image.file}}.{{image.extension}}">
+                    <nav class="name">{{image.file}}</nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="resetAll()">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createItem()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Modal to read-->
+    <div class="modal fade wd" id="toRead" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{article.section | uppercase}}</h4>
+          </div>
+          <div class="modal-body" >
+           
+              <h2 class="titleM">{{article.title}}</h2>
+              <h4 class="topicM">{{article.topic}}</h4>
+              <h5 class="dateM">{{article.date | date}}</h5>
+              
+              <p [innerHTML]="article.text | sanitizer"></p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal to edit-->
+    <div class="modal fade wd" id="toEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">New</h4>
+          </div>
+          <div class="modal-body" >
+           <div class="form-group">
+              <label for="title">Title</label>
+              <input type="input" class="form-control" id="title" value="{{article.title}}">
+            </div>
+
+            <div class="form-group">
+              <label for="topic">Topic</label>
+              <input type="input" class="form-control" id="topic" value="{{article.topic}}">
+            </div>
+
+             <div class="form-group">
+              <label for="description">Description</label>
+              <input type="input" class="form-control" id="description" value="{{article.description}}">
+            </div>
+
+             <div class="form-group">
+              <label for="section">Section</label>
+              <select id="section" class="form-control" value="{{article.section}}">
+                <option value="release">Release</option>
+                <option value="reinforcement">Reinforcement</option>
+                <option value="hyperlink">Hyperlink</option>
+              </select>
+            </div>
+
+             <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" class="form-control" id="date" value="{{date}}">
+            </div>
+
+            <div class="form-group">
+              <label for="text">Text</label>
+              <div id="editArticle" >
+           
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="image">Images</label>
+              <input type="text" class="form-control" placeholder="Searching..." [(ngModel)]="img">
+              <div class="images">
+                <div *ngFor="let image of tools | images:img">
+                  <div class="image" *ngIf="image.extension == 'png' || image.extension == 'jpg'">
+                    <img src="{{url}}get-image/{{image.file}}.{{image.extension}}">
+                    <nav class="name">{{image.file}}</nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateItem(article._id)">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  <div class="content">
+
+    <div class="area">
+      <h3>Releases</h3>
+
+      <div *ngFor="let item of data" >
+        <div *ngIf="item.section == 'release' " class="section">
+          <div class="topic">{{item.title}}</div>
+          <span class="date">{{item.date | date}}</span>
+          <div class="theme">{{item.topic}}</div> 
+          <p>{{item.description}}</p>
+
+          <div class="buttons">
+            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#toRead" (click)="openItem(item._id)">Read</button>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#toEdit" (click)="openItem(item._id)" *ngIf="role == 'Admin'">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteArticle(item._id)" *ngIf="role == 'Admin'">Delete</button>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="area">
+
+      <h3>Reinforcements</h3>
+
+      <div *ngFor="let item of data" >
+        <div *ngIf="item.section == 'reinforcement'" class="section">
+          <div class="topic">{{item.title}}</div>
+          <span class="date">{{item.date | date}}</span>
+          <div class="theme">{{item.topic}}</div> 
+          <p>{{item.description}}</p>
+
+          <div class="buttons">
+            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#toRead" (click)="openItem(item._id)">Read</button>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#toEdit" (click)="openItem(item._id)" *ngIf="role == 'Admin'">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteArticle(item._id)" *ngIf="role == 'Admin'">Delete</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="area">
+      <h3>Hyperlinks</h3>
+
+      <div *ngFor="let item of data" >
+        <div *ngIf="item.section == 'hyperlink'" class="section">
+          <div class="topic">{{item.title}}</div>
+          <span class="date">{{item.date | date}}</span>
+          <div class="theme">{{item.topic}}</div> 
+          <p>{{item.description}}</p>
+
+          <div class="buttons">
+            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#toRead" (click)="openItem(item._id)">Read</button>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#toEdit" (click)="openItem(item._id)" *ngIf="role == 'Admin'">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteArticle(item._id)" *ngIf="role == 'Admin'">Delete</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

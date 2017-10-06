@@ -1,0 +1,52 @@
+<div id="users">
+
+  <h2>Users</h2>
+
+  <div class="usersTable">
+      <nav class="btn btn-primary btn-md" (click)="newUser(true)">New user</nav>
+
+    <table class="table table-hover">
+      <tr class="active">
+        <th>S3</th>
+        <th>Nombre</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Manager</th>
+        <th>Actions</th>
+      </tr>
+
+      <tr class="active" *ngIf="create">
+        <td><input type="text" #s3="ngModel" name="s3" [(ngModel)]="user.s3"></td>
+        <td><input type="text" #name="ngModel" name="name" [(ngModel)]="user.name"></td>
+        <td><input type="text" #password="ngModel" name="password" [(ngModel)]="user.password"></td>
+        <td><input type="text" #email="ngModel" name="email" [(ngModel)]="user.email"></td>
+        <td>
+          <select #role="ngModel" name="role" [(ngModel)]="user.role">
+            <option value="CA">CA</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </td>
+        <td><input type="text" #manager="ngModel" name="manager" [(ngModel)]="user.manager"></td>
+        <td>
+          <nav class="btn btn-primary btn-xs glyphicon glyphicon-plus" (click)="createUser()"></nav>
+          <nav class="btn btn-danger btn-xs glyphicon glyphicon-remove" (click)="newUser(false)"></nav>
+        </td>
+      </tr>
+      
+      <tr *ngFor="let user of data">
+        <td>{{user.s3}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.manager}}</td>
+        <td>
+          <nav class="btn btn-danger btn-xs glyphicon glyphicon-remove" (click)="deleteUser(user._id)"></nav>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>

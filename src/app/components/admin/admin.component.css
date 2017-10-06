@@ -1,0 +1,13 @@
+#users {
+  width: 100%;
+  min-height: 600px; }
+  #users h2 {
+    width: 100%;
+    text-align: center; }
+  #users .usersTable {
+    width: 95%;
+    margin: auto; }
+    #users .usersTable .btn {
+      margin-bottom: 10px; }
+
+/*# sourceMappingURL=admin.component.css.map */

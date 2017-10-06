@@ -1,0 +1,134 @@
+<div id="tools">
+
+  <h2>Tools</h2>
+
+  <div class="list-group section" *ngIf="role == 'Admin'">
+    <nav class="list-group-item active">
+      Upload files
+    </nav>
+
+    <div class="list-group-item">
+      <input type="file" id="file" (change)="fileChangeEvent($event)">
+      <div class="btn btn-success glyphicon glyphicon-open" (click)="uploadFile()"></div>
+    </div>
+    
+  </div> 
+
+  
+  <div class="list-group section">
+    <nav class="list-group-item active">
+      Excel files
+    </nav>
+    
+    
+    <div *ngFor="let item of data">
+        <div class="list-group-item item" *ngIf="item.extension == 'xls' || item.extension == 'xlsx' ">
+        <div class="icon"><img src="assets/svg/excel.svg" alt="excel"></div>
+        
+        <div class="text">
+          <div class="name">{{item.file}}</div>
+          <div class="date">{{item.date | date}}</div>
+        </div>
+  
+        <div class="buttons">
+          <a class="btn btn-success glyphicon glyphicon-download-alt" href="{{url}}download-tool/{{item.file}}.{{item.extension}}"></a>
+          <button class="btn btn-danger glyphicon glyphicon glyphicon-remove" (click)="deleteFile(item._id)" *ngIf="role == 'Admin'"></button>
+        </div>
+      </div>
+    </div>
+    
+  </div> 
+
+  <div class="list-group section">
+    <nav class="list-group-item active">
+      PDF files
+    </nav>
+    
+    <div *ngFor="let item of data">
+      <div class="list-group-item item" *ngIf="item.extension == 'pdf' ">
+        <div class="icon"><img src="assets/svg/pdf.svg" alt="excel"></div>
+        
+        <div class="text">
+          <div class="name">{{item.file}}</div>
+          <div class="date">{{item.date | date}}</div>
+        </div>
+  
+        <div class="buttons">
+          <a class="btn btn-success glyphicon glyphicon-download-alt" href="{{url}}download-tool/{{item.file}}.{{item.extension}}"></a>
+          <button class="btn btn-danger glyphicon glyphicon glyphicon-remove" (click)="deleteFile(item._id)" *ngIf="role == 'Admin'"></button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div class="list-group section">
+    <nav class="list-group-item active">
+      Zip files
+    </nav>
+    
+    <div *ngFor="let item of data">
+      <div class="list-group-item item" *ngIf="item.extension == 'zip' ">
+        <div class="icon"><img src="assets/svg/zip.svg" alt="zip"></div>
+        
+        <div class="text">
+          <div class="name">{{item.file}}</div>
+          <div class="date">{{item.date | date}}</div>
+        </div>
+  
+        <div class="buttons">
+          <a class="btn btn-success glyphicon glyphicon-download-alt" href="{{url}}download-tool/{{item.file}}.{{item.extension}}"></a>
+          <button class="btn btn-danger glyphicon glyphicon glyphicon-remove" (click)="deleteFile(item._id)" *ngIf="role == 'Admin'"></button>
+        </div>
+      </div>
+    </div>
+    
+  </div> 
+
+  <div class="list-group section">
+    <nav class="list-group-item active">
+      Word files
+    </nav>
+    
+    <div *ngFor="let item of data">
+      <div class="list-group-item item" *ngIf="item.extension == 'docx' ">
+        <div class="icon"><img src="assets/svg/doc.svg" alt="excel"></div>
+        
+        <div class="text">
+          <div class="name">{{item.file}}</div>
+          <div class="date">{{item.date | date}}</div>
+        </div>
+  
+        <div class="buttons">
+          <a class="btn btn-success glyphicon glyphicon-download-alt" href="{{url}}download-tool/{{item.file}}.{{item.extension}}"></a>
+          <button class="btn btn-danger glyphicon glyphicon glyphicon-remove" (click)="deleteFile(item._id)" *ngIf="role == 'Admin'"></button>
+        </div>
+      </div>
+    </div>
+    
+  </div> 
+
+  <div class="list-group section" *ngIf="role == 'Admin'">
+    <nav class="list-group-item active">
+      Images
+    </nav>
+    
+    
+    <div *ngFor="let item of data" >
+        <div class="list-group-item item" *ngIf="item.extension == 'png' || item.extension == 'jpg' ">
+        <div class="icon"><img src="assets/svg/picture.svg" alt="excel"></div>
+        
+        <div class="text">
+          <div class="name">{{item.file}}</div>
+          <div class="date">{{item.date | date}}</div>
+        </div>
+  
+        <div class="buttons">
+          <a class="btn btn-success glyphicon glyphicon-download-alt" href="{{url}}download-tool/{{item.file}}.{{item.extension}}"></a>
+          <button class="btn btn-danger glyphicon glyphicon glyphicon-remove" (click)="deleteFile(item._id)" ></button>
+        </div>
+      </div>
+    </div>
+    
+  </div> 
+
+</div>

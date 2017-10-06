@@ -1,0 +1,18 @@
+#users{
+    width: 100%;
+    min-height: 600px;;
+
+    h2{
+        width: 100%;
+        text-align: center;
+    }
+
+    .usersTable{
+        width: 95%;
+        margin: auto;
+
+        .btn{
+            margin-bottom: 10px;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+#articles {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #articles .content {
+    width: 98%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+    #articles .content .area {
+      width: 30%;
+      min-width: 300px;
+      height: auto; }
+      #articles .content .area h3 {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        text-decoration: underline;
+        color: #555; }
+      #articles .content .area .section {
+        width: 100%;
+        height: auto;
+        margin: 5px 0px 5px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid black; }
+        #articles .content .area .section .topic {
+          width: 100%;
+          height: auto;
+          font-size: 22px; }
+        #articles .content .area .section .date {
+          width: 100%;
+          height: auto;
+          font-size: 12px; }
+        #articles .content .area .section .theme {
+          width: 100%;
+          height: auto;
+          font-size: 18px; }
+        #articles .content .area .section p {
+          width: 100%;
+          height: auto; }
+  #articles .images {
+    width: 100%;
+    height: auto; }
+    #articles .images .image {
+      width: 100%;
+      height: 70px;
+      margin-top: 5px; }
+      #articles .images .image nav {
+        width: 70%;
+        height: 70px;
+        float: left;
+        line-height: 60px;
+        padding-left: 10px; }
+      #articles .images .image img {
+        width: 60px;
+        height: 60px;
+        float: left; }
+  #articles .titleM, #articles .topicM, #articles .dateM {
+    text-align: center; }
+
+/*# sourceMappingURL=articles.component.css.map */

@@ -1,0 +1,60 @@
+<div id="container" *ngIf="logged">
+
+  <div id="header" >
+    <div id="logo">
+      <img src="./assets/images/xerox.png" alt="Xerox">
+    </div>
+
+    <div id="user" class="btn btn-primary glyphicon glyphicon-log-out" (click)="logoff()">
+
+    </div>
+
+    <div id="menu">
+      <nav><a [routerLink]="['/']">Home</a></nav>
+      <nav><a [routerLink]="['guideline']">Guideline</a></nav>
+      <nav><a [routerLink]="['articles']">Articles</a></nav>
+      <nav><a [routerLink]="['tools']">Tools</a></nav>
+      <nav *ngIf="role == 'Admin'"><a [routerLink]="['admin']">Admin</a></nav>
+    </div>
+
+
+  </div>
+
+  <div id="router">
+    
+       <router-outlet></router-outlet>
+
+  </div>
+
+  <div id="footer">
+    Pre-Billing Team - Xerox 2017
+  </div>
+
+</div>
+
+
+
+<div id="register" *ngIf="!logged"> 
+
+  <h1>Pre-Billing Team</h1>
+
+  <div id="form">      
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">S3</label>
+        <input type="text" class="form-control" #s3="ngModel" name="s3" [(ngModel)]="user.s3">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" #password="ngModel" name="password" [(ngModel)]="user.password">
+      </div>
+      
+      <button type="submit" class="btn btn-default" (click)="getUser()">Submit</button>
+      <nav *ngIf="errorMessage">{{errorMessage}}</nav>
+    </form>
+  </div>  
+
+</div>
+
+
+
