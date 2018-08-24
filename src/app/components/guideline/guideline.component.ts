@@ -19,7 +19,7 @@ export class GuidelineComponent implements OnInit {
   public find;
   public errorMessage;
   public guideline:Guideline;
-  //
+  //This is just for updates only
   public name;
   public role;
 
